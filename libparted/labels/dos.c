@@ -439,6 +439,9 @@ fat_probe_fat32 (PedGeometry* geom);
 PedGeometry*
 ntfs_probe (PedGeometry* geom);
 
+PedGeometry*
+exfat_probe (PedGeometry* geom);
+
 static int
 msdos_probe (const PedDevice *dev)
 {
@@ -474,6 +477,9 @@ msdos_probe (const PedDevice *dev)
 	fsgeom = ntfs_probe (geom);
 	if (fsgeom)
 		goto probe_fail; /* ntfs fs looks like dos mbr */
+	fsgeom = exfat_probe (geom);
+	if (fsgeom)
+		goto probe_fail; /* exfat fs looks like dos mbr */
 	ped_geometry_destroy (geom);
 	geom = NULL;
 

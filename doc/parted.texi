@@ -624,6 +624,7 @@ partition table.
 @itemize @bullet
 @item btrfs
 @item ext2, ext3, ext4
+@item exfat
 @item fat16, fat32
 @item hfs, hfs+, hfsx
 @item hp-ufs

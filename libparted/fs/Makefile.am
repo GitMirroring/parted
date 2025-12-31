@@ -28,6 +28,7 @@ libfs_la_SOURCES =		\
   ext2/ext2.h			\
   ext2/ext2_fs.h		\
   ext2/interface.c		\
+  exfat/exfat.c			\
   fat/bootsector.c		\
   fat/bootsector.h		\
   fat/count.h			\
