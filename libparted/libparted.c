@@ -245,6 +245,7 @@ ped_malloc (size_t size)
 {
 	void*		mem;
 
+        PED_ASSERT(size > 0);
 	mem = (void*) malloc (size);
 	if (!mem) {
 		ped_exception_throw (PED_EXCEPTION_FATAL, PED_EXCEPTION_CANCEL,

@@ -166,6 +166,7 @@ flag_traverse_dir (FatTraverseInfo* trav_info) {
 	PedSector		size;
 
 	PED_ASSERT (trav_info != NULL);
+	PED_ASSERT (strlen(trav_info->dir_name) < 4083);
 
 	strcpy (file_name, trav_info->dir_name);
 	file_name_start = file_name + strlen (file_name);

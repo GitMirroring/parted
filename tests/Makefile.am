@@ -60,6 +60,7 @@ TESTS = \
   t2420-msdos-no-boot-code.sh \
   t2500-probe-corrupt-hfs.sh \
   t3000-resize-fs.sh \
+  t3001-buffer.sh \
   t3200-resize-partition.sh \
   t3200-type-change.sh \
   t3210-gpt-type-change.sh \

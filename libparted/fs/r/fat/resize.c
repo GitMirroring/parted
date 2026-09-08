@@ -86,6 +86,8 @@ duplicate_legacy_root_dir (FatOpContext* ctx)
 
 	PED_ASSERT (old_fs_info->root_dir_sector_count
 			== new_fs_info->root_dir_sector_count);
+        PED_ASSERT (old_fs_info->root_dir_sector_count <= old_fs_info->buffer_sectors);
+        PED_ASSERT (new_fs_info->root_dir_sector_count <= new_fs_info->buffer_sectors);
 
 	if (!ped_geometry_read (ctx->old_fs->geom, old_fs_info->buffer,
 				old_fs_info->root_dir_offset,
