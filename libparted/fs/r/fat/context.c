@@ -96,6 +96,8 @@ fat_op_context_new (PedFileSystem* new_fs, PedFileSystem* old_fs)
 	if (!ctx->buffer_map)
 		goto error_free_ctx;
 
+        PED_ASSERT (old_fs_info->frag_count > 0);
+        PED_ASSERT ((size_t) old_fs_info->frag_count < SIZE_MAX / sizeof (FatFragment));
 	ctx->remap = (FatFragment*) ped_malloc (sizeof (FatFragment)
 						   * old_fs_info->frag_count);
 	if (!ctx->remap)
