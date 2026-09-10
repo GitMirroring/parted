@@ -49,6 +49,8 @@ hfsc_new_cachetable(unsigned int size)
 	ret->table_size = size;
 	ret->table_first_free = 0;
 
+        PED_ASSERT (size > 0);
+        PED_ASSERT ((size_t) size * sizeof(*ret->table) < SIZE_MAX);
 	ret->table = ped_malloc(sizeof(*ret->table)*size);
 	if (!ret->table) { free(ret); return NULL; }
 	memset(ret->table, 0, sizeof(*ret->table)*size);
