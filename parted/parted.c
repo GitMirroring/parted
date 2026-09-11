@@ -1414,7 +1414,7 @@ do_print (PedDevice** dev, PedDisk** diskp)
                         part->type & PED_PARTITION_METADATA)
                             continue;
 
-                    tmp = ped_malloc (4);
+                    tmp = ped_malloc (6);
 
                     if (part->num >= 0)
                             sprintf (tmp, "%2d ", part->num);
