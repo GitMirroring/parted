@@ -18,6 +18,7 @@
 
 #include <config.h>
 #include <arch/linux.h>
+#include <parted/debug.h>
 #include <parted/vtoc.h>
 #include <parted/device.h>
 #include <parted/fdasd.h>
@@ -697,7 +698,9 @@ fdasd_process_valid_vtoc (fdasd_anchor_t * anc, unsigned long b, int fd)
 				if (ch != NULL) {
 					strncpy (s, ch + 4, 4);
 					s[4] = '\0';
-					n = atoi (s) - 1;
+					n = atoi (s);
+                                        PED_ASSERT (n >= 0);
+                                        n = n - 1;
 				}
 
 				vtoc_ebcdic_enc (p->f1->DS1DSNAM, p->f1->DS1DSNAM, 44);
