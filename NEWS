@@ -2,6 +2,23 @@ GNU parted NEWS                                    -*- outline -*-
 
 * Noteworthy changes in release ?.? (????-??-??) [?]
 
+** New Features
+
+  Add support for ExFAT filesystem
+
+** Bug Fixes
+
+  build: mark functions with const attribute, per gcc warnings
+
+  Cleanup zero as null pointer constant warnings
+
+  Fix 2 CVEs - CVE-2026-89085 and CVE-2026-89088
+
+  Add PED_ASSERT protection for 32bit build filesystem resize
+
+  fdasd: Make sure data set name is positive
+
+  parted: Fix partition number allocation in do_print
 
 * Noteworthy changes in release 3.7 (2026-04-08) [stable]
 
