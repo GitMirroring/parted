@@ -512,13 +512,28 @@ retry:
 			}
 		}
 
-		memcpy (user_buffer + have_read - read_offset,
-			store_read_buffer
-			+ (have_read >= read_offset
-				? 0 : read_offset - have_read),
-			have_read + did_read > device_read_length + read_offset
-				? device_read_length + read_offset - have_read
-				: did_read);
+		size_t src_off = (have_read >= read_offset) ? 0 : (read_offset - have_read);
+		size_t dst_off = (have_read > read_offset) ? (have_read - read_offset) : 0;
+		size_t copy_len = (have_read + did_read > device_read_length + read_offset)
+			? (device_read_length + read_offset - have_read)
+			: did_read;
+
+		/* Remove skipped prefix from source window.  */
+		if (src_off >= copy_len)
+			copy_len = 0;
+		else
+			copy_len -= src_off;
+
+		/* Clamp to caller buffer bounds.  */
+		if (dst_off >= device_read_length)
+			copy_len = 0;
+		else if (dst_off + copy_len > device_read_length )
+			copy_len = device_read_length - dst_off;
+
+		if (copy_len)
+			memcpy ((char*) user_buffer + dst_off,
+				(char*) store_read_buffer + src_off,
+				copy_len);
 
 		if (store_read_buffer != local_buffer)
 			vm_deallocate (mach_task_self (),
