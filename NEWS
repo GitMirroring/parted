@@ -2,6 +2,9 @@ GNU parted NEWS                                    -*- outline -*-
 
 * Noteworthy changes in release ?.? (????-??-??) [?]
 
+** Bug Fixes
+
+  hurd: Fix gnu_read problems with block size > 512b
 
 * Noteworthy changes in release 3.7.13 (2026-09-14) [alpha]
 
